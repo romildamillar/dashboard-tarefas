@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard de Tarefas com CRUD completo e persistência local via localStorage. Projeto de portfólio desenvolvido em HTML, CSS e JavaScript puro.">
+  <title>Dashboard de Tarefas | Romilda Millar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>📋 Dashboard de Tarefas</h1>
+    <p class="subtitle">Organize seu dia, uma tarefa por vez</p>
+  </header>
+
+  <main class="container">
+
+    <!-- Formulário de nova tarefa -->
+    <section class="form-section" aria-label="Adicionar nova tarefa">
+      <form id="form-tarefa">
+        <label for="input-titulo" class="visually-hidden">Título da tarefa</label>
+        <input
+          type="text"
+          id="input-titulo"
+          placeholder="Digite uma nova tarefa..."
+          aria-label="Título da nova tarefa"
+          required
+        >
+        <label for="select-prioridade" class="visually-hidden">Prioridade</label>
+        <select id="select-prioridade" aria-label="Selecionar prioridade da tarefa">
+          <option value="baixa">Baixa</option>
+          <option value="media" selected>Média</option>
+          <option value="alta">Alta</option>
+        </select>
+        <button type="submit" class="btn-adicionar">Adicionar</button>
+      </form>
+    </section>
+
+    <!-- Estatísticas -->
+    <section class="stats" aria-label="Estatísticas das tarefas">
+      <div class="stat-card">
+        <span class="stat-numero" id="total-tarefas">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-numero" id="total-pendentes">0</span>
+        <span class="stat-label">Pendentes</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-numero" id="total-concluidas">0</span>
+        <span class="stat-label">Concluídas</span>
+      </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filtros" role="group" aria-label="Filtrar tarefas">
+      <button class="filtro-btn ativo" data-filtro="todas" aria-pressed="true">Todas</button>
+      <button class="filtro-btn" data-filtro="pendentes" aria-pressed="false">Pendentes</button>
+      <button class="filtro-btn" data-filtro="concluidas" aria-pressed="false">Concluídas</button>
+    </section>
+
+    <!-- Lista de tarefas -->
+    <section class="lista-section" aria-label="Lista de tarefas">
+      <ul id="lista-tarefas" class="lista-tarefas" aria-live="polite">
+        <!-- Tarefas inseridas via JS -->
+      </ul>
+      <p id="mensagem-vazia" class="mensagem-vazia" style="display:none;">
+        Nenhuma tarefa por aqui ainda. Adicione a primeira! ✨
+      </p>
+    </section>
+
+  </main>
+
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
+
+  <footer class="footer">
+    <p>Dashboard de Tarefas &copy; 2026</p>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/tarefas.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
